@@ -9,7 +9,7 @@ on:
       name:
         description: 'Person to greet'
         required: true
-        default: 'World'
+        default: 'World123'
 # When the event is triggered, GitHub Actions will run the jobs indicated
 jobs:
   say_hello:
