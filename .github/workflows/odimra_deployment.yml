@@ -1,0 +1,22 @@
+name: odimra_deploy
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+
+  build:
+    name: Deploy
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure pre-req for odimra deployment
+      run: |
+        echo "Start pre req conguration"
+        pwd
+        ls -ltr
+
+
