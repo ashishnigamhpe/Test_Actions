@@ -27,6 +27,7 @@ jobs:
         sudo apt install software-properties-common -y
         sudo -E apt-add-repository ppa:ansible/ansible
         sudo apt install openjdk-8-jre-headless -y
+        sudo apt-get install python3-setuptools
         python3 -m pip install --upgrade pip
         pip3 install pyyaml==5.3.1
         #pip3 install pycryptodomex==3.9.7
