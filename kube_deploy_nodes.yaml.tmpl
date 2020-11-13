@@ -1,0 +1,115 @@
+deploymentID: <Unique identifier for the deployment>
+odimControllerSrcPath: <Absolute_Path_odim-controller_Src>
+odimra_cert_path: <Absolute_path_of_odimra_certificates>
+httpProxy: <HTTP Proxy to be set in the nodes>
+httpsProxy: <HTTPS Proxy to be set in the nodes>
+noProxy: <NO PROXY env to be set in the nodes>
+nodes:
+  <Node1_Hostname>:
+    ip: <Node1_IPAddress>
+    username: <Node1_Username>
+  <Node2_Hostname>:
+    ip: <Node2_IPAddress>
+    username: <Node2_Username>
+  <Node3_Hostname>:
+    ip: <Node3_IPAddress>
+    username: <Node3_Username>
+odimra:
+  groupID: "2021"
+  userID: "2021"
+  namespace: "odim"
+  fqdn: ""
+  hostIP: ""
+  rootServiceUUID: ""
+  redisInMemoryHost: redis-inmemory
+  redisOnDiskHost: redis-ondisk
+  redisHAEnabled: false
+  connectionMethodConf:
+  - ConnectionMethodType: Redfish
+    ConnectionMethodVariant: Compute:BasicAuth:GRF_v1.0.0
+  - ConnectionMethodType: Redfish
+    ConnectionMethodVariant: Storage:BasicAuth:STG_v1.0.0
+  kafkaHost: kafka
+  kafkaPort: 9092
+  grfPluginRootServiceUUID:
+  grfPluginUsername: admin
+  grfPluginPassword: "UUFCYFpBoHh6UdvytPzm65SkHj5zyl73EYVNJNbrFeAPWYrkpTijGB9zrVQSbbLv052HK7-7chqDQQcjgWf7YA=="
+  grfPluginLBHost: ""
+  grfPluginLBPort: ""
+
+  appsLogPath: "/var/log/odimra"
+  odimraServerCertFQDNSan: "<CSV of FQDNs to include in ODIM-RA server certificate SAN>"
+  odimraServerCertIPSan: "<CSV of IPs to include in ODIM-RA server certificate SAN>"
+  odimraKafkaClientCertFQDNSan: "<CSV of FQDNs to include in ODIM-RA kafka client certificate SAN>"
+  odimraKafkaClientCertIPSan: "<CSV of IPs to include in ODIM-RA kafka client certificate SAN>"
+
+  accountSessionReplicaCount: 1
+  accountSessionPort: 45101
+  accountSessionImageTag: "1.0"
+
+  aggregationReplicaCount: 1
+  aggregationPort: 45102
+  aggregationImageTag: "1.0"
+
+  apiReplicaCount: 1
+  apiPort: 45000
+  apiNodePort: 30080
+  apiImageTag: "1.0"
+
+  eventReplicaCount: 1
+  eventPort: 45103
+  eventImageTag: "1.0"
+  
+  fabricsReplicaCount: 1
+  fabricsPort: 45106
+  fabricsImageTag: "1.0"
+  
+  managersReplicaCount: 1
+  managersPort: 45107
+  managersImageTag: "1.0"
+  
+  systemsReplicaCount: 1
+  systemsPort: 45104
+  systemsImageTag: "1.0"
+  
+  taskReplicaCount: 1
+  taskPort: 45105
+  taskImageTag: "1.0"
+  
+  updateReplicaCount: 1
+  updatePort: 45108
+  updateImageTag: "1.0"
+  
+  pluginReplicaCount: 1
+  pluginPort: 45001
+  pluginEventPort: 45002
+  pluginEventNodePort: "30081"
+  pluginImageTag: "1.0"
+  pluginLogPath: "/var/log/grfplugin_logs"
+  
+  consulDataPath: "/etc/consul/data"
+  consulConfPath: "/etc/consul/conf"
+  
+  kafkaConfPath: "/etc/kafka/conf"
+  kafkaDataPath: "/etc/kafka/data"
+  kafkaJKSName: "kafka.keystore.jks"
+  kafkaJTSName: "kafka.truststore.jks"
+  kafkaJKSPassword: "K@fk@_store1"
+
+  redisImageTag: odimra
+  redisOndiskDataPath: /etc/redis/data/ondisk
+  redisInmemoryDataPath: /etc/redis/data/inmemory
+  
+  zookeeperConfPath: "/etc/zookeeper/conf"
+  zookeeperDataPath: "/etc/zookeeper/data"
+  zookeeperJKSName: "zookeeper.keystore.jks"
+  zookeeperJTSName: "zookeeper.truststore.jks"
+  zookeeperJKSPassword: "K@fk@_store1"
+  
+  rootCACert:
+  odimraServerCert:
+  odimraServerKey:
+  odimraRSAPublicKey:
+  odimraRSAPrivateKey:
+  odimraKafkaClientCert:
+  odimraKafkaClientKey:
