@@ -35,6 +35,7 @@ jobs:
 
         rootServiceUUID=`uuidgen`
         grfPluginRootServiceUUID=`uuidgen`
+        echo $rootServiceUUID
         home_path=`pwd`
         echo $home_path
         host_name=`hostname`
@@ -57,8 +58,8 @@ jobs:
         sed -i '/fqdn:/ a \  hostIP: \"${VM_IP}\"' kube_deploy_nodes.yaml
         sed -i '/hostIP:/ a \  rootServiceUUID: \"${rootServiceUUID}\"' kube_deploy_nodes.yaml
         sed -i '/kafkaPort:/ a \  grfPluginRootServiceUUID: ${grfPluginRootServiceUUID}' kube_deploy_nodes.yaml
-        sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: \"${VM_IP}\"' kube_deploy_nodes.yaml
-        sed -i '/grfPluginLBHost:/ a \  grfPluginLBPort: \"${LBPORT}\"' kube_deploy_nodes.yaml
+        sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: "${VM_IP}"' kube_deploy_nodes.yaml
+        sed -i '/grfPluginLBHost:/ a \  grfPluginLBPort: "${LBPORT}"' kube_deploy_nodes.yaml
 
         sed -i "s/<Node1_Hostname>:/${host_name}:/g" kube_deploy_nodes.yaml
         sed -i "s/ip:\s*<Node1_IPAddress>/ip: ${VM_IP}/g" kube_deploy_nodes.yaml
