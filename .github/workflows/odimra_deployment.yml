@@ -33,6 +33,49 @@ jobs:
         pip3 install pycryptodomex==3.9.7
         cp kube_deploy_nodes.yaml.tmpl kube_deploy_nodes.yaml
         cat kube_deploy_nodes.yaml
+        rootServiceUUID=`uuidgen`
+        grfPluginRootServiceUUID=`uuidgen`
+        #odim-controller/scripts/
+        home_path=`pwd`
+        host_name=`hostname`
+        VM_IP=`hostname -I | awk '{print $1}'`
+        LBPORT=30081
+        FQDN=odim.controller.com
+        sed -i '/Node[23]_/d' kube_deploy_nodes.yaml
+        sed -i '/CSV of/d' kube_deploy_nodes.yaml
+        sed -i '/hostIP:/d' kube_deploy_nodes.yaml
+        sed -i '/fqdn:/d' kube_deploy_nodes.yaml
+        sed -i '/rootServiceUUID:/d' kube_deploy_nodes.yaml
+        sed -i '/grfPluginLBHost:/d' kube_deploy_nodes.yaml
+        sed -i '/grfPluginLBPort:/d' kube_deploy_nodes.yaml
+        sed -i '/grfPluginRootServiceUUID:/d' kube_deploy_nodes.yaml
+        sed -i '/namespace:/ a \  fqdn: \"${FQDN}\"' kube_deploy_nodes.yaml
+        sed -i '/fqdn:/ a \  hostIP: \"${VM_IP}\"' kube_deploy_nodes.yaml
+        sed -i '/hostIP:/ a \  rootServiceUUID: \"${rootServiceUUID}\"' kube_deploy_nodes.yaml
+        sed -i '/kafkaPort:/ a \  grfPluginRootServiceUUID: ${grfPluginRootServiceUUID}' kube_deploy_nodes.yaml
+        sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: \"${VM_IP}\"' kube_deploy_nodes.yaml
+        sed -i '/grfPluginLBHost:/ a \  grfPluginLBPort: \"${LBPORT}\"' kube_deploy_nodes.yaml
+
+        sed -i \"s/<Node1_Hostname>:/${host_name}:/g\" kube_deploy_nodes.yaml
+        sed -i \"s/ip:\s*<Node1_IPAddress>/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
+        sed -i \"s/username:\s*<Node1_Username>/username: ${USERNAME}/g\" kube_deploy_nodes.yaml
+        sed -i \"s/ip:\s*<Node1_IPAddress>:/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
+
+        ODIM_CONTROLLER_PATH=$home_path
+        sed -i "s/deploymentID:\s*<Unique identifier for the deployment>/deploymentID: OneNodeDeployment/g" kube_deploy_nodes.yaml
+
+        sed -i "s/odimra_cert_path:\s*<Absolute_path_of_odimra_certificates>/odimra_cert_path: /g" kube_deploy_nodes.yaml
+        sed -i \"s/odimControllerSrcPath:\s*<Absolute_Path_odim-controller_Src>/odimControllerSrcPath: ${ODIM_CONTROLLER_PATH//\//\\/}/g\" kube_deploy_nodes.yaml
+
+        sed -i "s/httpsProxy:\s*<HTTPS Proxy to be set in the nodes>/httpsProxy: None/g" kube_deploy_nodes.yaml
+        sed -i "s/httpProxy:\s*<HTTP Proxy to be set in the nodes>/httpProxy: None/g" kube_deploy_nodes.yaml
+        sed -i "s/noProxy:\s*<NO PROXY env to be set in the nodes>/noProxy: None/g" kube_deploy_nodes.yaml
+        sed -i '/consulConfPath/ a \  redisDataPath: \"/etc/redis/data\"' kube_deploy_nodes.yaml
+        sed -i '/consulConfPath/ a \  redisConfPath: \"/etc/redis/conf\"' kube_deploy_nodes.yaml
+
+        echo ${home_path}
+        cat kube_deploy_nodes.yaml
+
 
 
 
