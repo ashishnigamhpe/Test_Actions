@@ -55,7 +55,7 @@ jobs:
         sed -i '/grfPluginLBPort:/d' kube_deploy_nodes.yaml
         sed -i '/grfPluginRootServiceUUID:/d' kube_deploy_nodes.yaml
         sed -i "/namespace:/ a \  fqdn: \"${FQDN}\"" kube_deploy_nodes.yaml
-        sed -i /fqdn:/ a \  hostIP: \"${VM_IP}\"' kube_deploy_nodes.yaml
+        sed -i '/fqdn:/ a \  hostIP: \"${VM_IP}\"' kube_deploy_nodes.yaml
         sed -i '/hostIP:/ a \  rootServiceUUID: \"${rootServiceUUID}\"' kube_deploy_nodes.yaml
         sed -i '/kafkaPort:/ a \  grfPluginRootServiceUUID: ${grfPluginRootServiceUUID}' kube_deploy_nodes.yaml
         sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: "${VM_IP}"' kube_deploy_nodes.yaml
