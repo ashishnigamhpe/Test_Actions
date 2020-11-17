@@ -41,6 +41,7 @@ jobs:
         host_name=`hostname`
         echo $host_name
         VM_IP=`hostname -I | awk '{print $1}'`
+        USERNAME=`whoami`
         LBPORT=30081
         FQDN=odim.controller.com
         echo $LBPORT
