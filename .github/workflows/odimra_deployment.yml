@@ -37,10 +37,14 @@ jobs:
         grfPluginRootServiceUUID=`uuidgen`
         #odim-controller/scripts/
         home_path=`pwd`
+        echo $home_path
         host_name=`hostname`
+        echo $host_name
         VM_IP=`hostname -I | awk '{print $1}'`
         LBPORT=30081
         FQDN=odim.controller.com
+        echo $LBPORT
+        echo $FQDN
         sed -i '/Node[23]_/d' kube_deploy_nodes.yaml
         sed -i '/CSV of/d' kube_deploy_nodes.yaml
         sed -i '/hostIP:/d' kube_deploy_nodes.yaml
