@@ -30,7 +30,9 @@ jobs:
         sudo apt-get install python3-setuptools
         python3 -m pip install --upgrade pip
         pip3 install pyyaml==5.3.1
-        #pip3 install pycryptodomex==3.9.7
+        pip3 install pycryptodomex==3.9.7
+        cp kube_deploy_nodes.yaml.tmpl kube_deploy_nodes.yaml
+        cat kube_deploy_nodes.yaml
 
 
 
