@@ -60,7 +60,7 @@ jobs:
         sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: \"${VM_IP}\"' kube_deploy_nodes.yaml
         sed -i '/grfPluginLBHost:/ a \  grfPluginLBPort: \"${LBPORT}\"' kube_deploy_nodes.yaml
 
-        sed -i \"s/<Node1_Hostname>:/${host_name}:/g\" kube_deploy_nodes.yaml
+        #sed -i \"s/<Node1_Hostname>:/${host_name}:/g\" kube_deploy_nodes.yaml
         sed -i \"s/ip:\s*<Node1_IPAddress>/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
         sed -i \"s/username:\s*<Node1_Username>/username: ${USERNAME}/g\" kube_deploy_nodes.yaml
         sed -i \"s/ip:\s*<Node1_IPAddress>:/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
