@@ -45,6 +45,7 @@ jobs:
         FQDN=odim.controller.com
         echo $LBPORT
         echo $FQDN
+
         sed -i '/Node[23]_/d' kube_deploy_nodes.yaml
         sed -i '/CSV of/d' kube_deploy_nodes.yaml
         sed -i '/hostIP:/d' kube_deploy_nodes.yaml
