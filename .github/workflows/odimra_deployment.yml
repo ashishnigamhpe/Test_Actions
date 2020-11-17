@@ -32,10 +32,9 @@ jobs:
         pip3 install pyyaml==5.3.1
         pip3 install pycryptodomex==3.9.7
         cp kube_deploy_nodes.yaml.tmpl kube_deploy_nodes.yaml
-        cat kube_deploy_nodes.yaml
+
         rootServiceUUID=`uuidgen`
         grfPluginRootServiceUUID=`uuidgen`
-        #odim-controller/scripts/
         home_path=`pwd`
         echo $home_path
         host_name=`hostname`
