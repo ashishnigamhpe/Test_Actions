@@ -60,16 +60,16 @@ jobs:
         sed -i '/grfPluginPassword:/ a \  grfPluginLBHost: \"${VM_IP}\"' kube_deploy_nodes.yaml
         sed -i '/grfPluginLBHost:/ a \  grfPluginLBPort: \"${LBPORT}\"' kube_deploy_nodes.yaml
 
-        #sed -i \"s/<Node1_Hostname>:/${host_name}:/g\" kube_deploy_nodes.yaml
-        sed -i \"s/ip:\s*<Node1_IPAddress>/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
-        sed -i \"s/username:\s*<Node1_Username>/username: ${USERNAME}/g\" kube_deploy_nodes.yaml
-        sed -i \"s/ip:\s*<Node1_IPAddress>:/ip: ${VM_IP}/g\" kube_deploy_nodes.yaml
+        sed -i "s/<Node1_Hostname>:/${host_name}:/g" kube_deploy_nodes.yaml
+        sed -i "s/ip:\s*<Node1_IPAddress>/ip: ${VM_IP}/g" kube_deploy_nodes.yaml
+        sed -i "s/username:\s*<Node1_Username>/username: ${USERNAME}/g" kube_deploy_nodes.yaml
+        sed -i "s/ip:\s*<Node1_IPAddress>:/ip: ${VM_IP}/g" kube_deploy_nodes.yaml
 
         ODIM_CONTROLLER_PATH=$home_path
         sed -i "s/deploymentID:\s*<Unique identifier for the deployment>/deploymentID: OneNodeDeployment/g" kube_deploy_nodes.yaml
 
         sed -i "s/odimra_cert_path:\s*<Absolute_path_of_odimra_certificates>/odimra_cert_path: /g" kube_deploy_nodes.yaml
-        sed -i \"s/odimControllerSrcPath:\s*<Absolute_Path_odim-controller_Src>/odimControllerSrcPath: ${ODIM_CONTROLLER_PATH//\//\\/}/g\" kube_deploy_nodes.yaml
+        sed -i "s/odimControllerSrcPath:\s*<Absolute_Path_odim-controller_Src>/odimControllerSrcPath: ${ODIM_CONTROLLER_PATH//\//\\/}/g" kube_deploy_nodes.yaml
 
         sed -i "s/httpsProxy:\s*<HTTPS Proxy to be set in the nodes>/httpsProxy: None/g" kube_deploy_nodes.yaml
         sed -i "s/httpProxy:\s*<HTTP Proxy to be set in the nodes>/httpProxy: None/g" kube_deploy_nodes.yaml
